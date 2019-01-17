@@ -1,0 +1,66 @@
+body {
+  background: grey;
+  font-family: monospace;
+}
+
+.navigation {
+  height: auto;
+  width: 100%;
+  background: #694ead;
+  text-decoration: none;
+  font-size: 18px;
+  float: left;
+  padding: 20px;
+}
+
+.navigation a {
+  text-align: center;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.active {
+  text-decoration: none;
+  color: red;
+  background: pink;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin: auto;
+  height: auto;
+  padding: 10px;
+  text-align: center;
+  color: black;
+}
+
+#sketch {
+  padding: 20px;
+  text-align: center;
+}
+
+.text-container {
+  margin-top: 80px;
+}
+
+.text-container input {
+  padding: 20px;
+}
+
+.text-container p {
+  font-size: 16px;
+}
+
+.text-container h2 {
+  font-size: 22px;
+}
+
+#sketch {
+  margin-top: 80px;
+}
+
+@media only screen and (max-width: 600px) {
+  .navigation {
+    font-size: 14px;
+  }
+}
