@@ -4,7 +4,7 @@
   "description": "A personal website for Samuel Giuseppe Schlesinger",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "sudo node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Samuel Giuseppe Schlesinger",
