@@ -53,8 +53,21 @@ app.get('/contact', (req, res) => {
   res.render('contact');
 });
 
-app.get('/sketch', (req, res) => {
-  res.render('sketch');
+app.get('/content', (req, res) => {
+  res.render('content');
+});
+
+app.get('/content/medium', (req, res) => {
+  res.render('content/medium');
+});
+
+
+app.get('/content/gravity', (req, res) => {
+  res.render('content/gravity');
+});
+
+app.get('/content/directdemocracy', (req, res) => {
+  res.render('content/directdemocracy');
 });
 
 // Conceptually, we imagine that there is a list of words we are not allowed to use
@@ -93,7 +106,9 @@ function wordsInDictionary(words) {
 app.post('/contact', (req, res) => {
   var word = req.body.word.toLowerCase();
   var words = oneLetterRemoved(word);
-  if (word.length < Math.floor(Math.random() * 3) + 3) {
+  if (word == "tearing") {
+    res.render('failure', {reason: "Do you really think I'd let that slide?"});
+  } else if (word.length < Math.floor(Math.random() * 3) + 3) {
     res.render('failure', {reason: "Pathetic, robot, you can't even think of a long word?"});
   } else if (!(word in dictionary)) { // check if the word has been used recently
     res.render('failure', {reason: "Filthy robot, that's not even a word..."});

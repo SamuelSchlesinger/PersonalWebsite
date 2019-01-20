@@ -1,6 +1,6 @@
 var canvas, world;
 
-var n = 100;
+var n = 200;
 var G = 0.01;
 
 function Particle(p, v, m) {
@@ -27,8 +27,22 @@ Particle.prototype.forceBy = function(particle) {
   return b;
 }
 
-function newWorld(n) {
+function randomParticleSomewhere(x, y) {
+  let p = createVector(x, y);
+  let v = createVector(0.01 * (Math.random() - 0.5), 0.01 * (Math.random() - 0.5));
+  return new Particle(p, v, (Math.random()*Math.random())*100 + 0.01);
+}
 
+function randomParticle() { 
+  return randomParticleSomewhere(Math.random() * width, Math.random() * height);
+}
+
+function newWorld(n) {
+  var i = 0;
+  var world = [];
+  while (i++ < n) 
+    world.push(randomParticle());
+  return world;
 }
 
 function updateWorld(world) {
@@ -54,14 +68,14 @@ function updateWorld(world) {
 function displayWorld(world) {
   var i = 0;
   while (i < world.length) {
-    let radius = world[i].m * 10 + 10;
-    noStroke();
+    let radius = world[i].m + 1;
+    noFill();
     if (world[i].id < 1) {
-      fill(world[i].id/3 * 255, 0, 0);
+      stroke(world[i].id/3 * 255, 0, 0);
     } else if (world[i].id < 2) {
-      fill(0, world[i].id/3 * 255, 0);
+      stroke(0, world[i].id/3 * 255, 0);
     } else {
-      fill(0, 0, world[i].id/3 * 255);
+      stroke(0, 0, world[i].id/3 * 255);
     }
     ellipse(world[i].p.x, world[i].p.y, radius, radius);  
     i++;
@@ -71,15 +85,7 @@ function displayWorld(world) {
 function setup() {
   canvas = createCanvas(windowWidth/1.2, windowHeight/1.4);
   canvas.parent('sketch');
-  var i = 0;
-  world = [];
-  while (i < n) {
-    let p = createVector(Math.random() * width, Math.random() * height);
-    let v = createVector(0.01 * (Math.random() - 0.5), 0.01 * (Math.random() - 0.5));
-    let a = new Particle(p, v, Math.random()*10 + 0.05);
-    world.push(a);
-    i++;
-  }
+  world = newWorld(n);
 }
 
 function draw() {
@@ -90,4 +96,8 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth/1.2, windowHeight/1.4);
+}
+
+function mouseClicked() {
+  world.push(randomParticleSomewhere(mouseX, mouseY));
 }

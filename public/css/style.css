@@ -1,12 +1,12 @@
 body {
-  background: grey;
-  font-family: monospace;
+  background: #e8dfae;
+  font-family: "Comic Sans MS";
 }
 
 .navigation {
   height: auto;
   width: 100%;
-  background: #694ead;
+  background: #85a6db;
   text-decoration: none;
   font-size: 18px;
   float: left;
@@ -18,12 +18,14 @@ body {
   text-align: center;
   text-decoration: none;
   padding: 20px;
+  color: black;
 }
 
 .active {
   text-decoration: none;
   color: red;
-  background: pink;
+  background: white;
+  font-size: 24px;
 }
 
 .header h1 {
@@ -41,7 +43,12 @@ body {
 }
 
 .text-container {
-  margin-top: 80px;
+  margin-top: 100px;
+  font-size: 16px;
+}
+
+.content dt {
+  float: center;
 }
 
 .text-container input {
@@ -49,11 +56,10 @@ body {
 }
 
 .text-container p {
-  font-size: 16px;
 }
 
 .text-container h2 {
-  font-size: 22px;
+  font-size: 26px;
 }
 
 #sketch {
